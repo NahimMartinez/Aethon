@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     
     #Mis apps
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
     
     'usuarios',
     'pruebas',
