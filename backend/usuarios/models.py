@@ -1,5 +1,6 @@
 from django.db import models
 from PIL import Image
+from typing import Any
 from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
@@ -17,11 +18,11 @@ class Usuario(AbstractUser):
         return f"{self.first_name} {self.last_name} {self.username}"
     
     # Sobrescribo el método save para redimensionar las fotos (que todas tengan igual tamaño)
-    def save(self, *args, **kwargs):
+    def save(self, *args: Any, **kwargs: Any) -> None:
         # Guardo el modelo normalmente
         super().save(*args, **kwargs)
 
-        # Verifico si el Entrenador realmente tiene una imagen cargada
+        # Verifico si el Atleta realmente tiene una imagen cargada
         if self.imagen:
             # Abro la imagen desde su ruta física
             img = Image.open(self.imagen.path)
