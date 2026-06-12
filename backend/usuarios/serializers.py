@@ -1,10 +1,11 @@
 """
 Serializadores de Usuarios.
-Transforman los modelos de base de datos (User, Atleta, Categoria)
+Transforman los modelos de base de datos (Usuario)
 en formato JSON para que el frontend los pueda consumir, y validan los datos entrantes.
 """
 from rest_framework import serializers
 from .models import Usuario
+from typing import Any
 
 class RegistroUsuarioSerializer(serializers.ModelSerializer):
 
@@ -17,7 +18,7 @@ class RegistroUsuarioSerializer(serializers.ModelSerializer):
         fields = ['username', 'password', 'email', 'first_name', 'last_name', 'dni', 'imagen']
 
     # Sobreescribo el método de guardado.
-    def create(self, validated_data):
+    def create(self, validated_data: dict[str, Any]) -> Usuario:
 
         # Uso create_user el cual ya me encripta la contraseña.
         usuario_nuevo = Usuario.objects.create_user(

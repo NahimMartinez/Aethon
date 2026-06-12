@@ -18,4 +18,7 @@ urlpatterns = [
 
     # urls de Usuarios
     path('api/usuarios/', include('usuarios.urls')),
+
+    # urls de Atletas
+    path('api/atletas/', include('atletas.urls'))
 ]
