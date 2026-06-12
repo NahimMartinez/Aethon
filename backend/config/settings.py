@@ -1,5 +1,6 @@
 from pathlib import Path
 import os 
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -120,23 +121,36 @@ STATIC_URL = 'static/'
 AUTH_USER_MODEL = 'usuarios.Usuario'
 
 # Configuración CORS
+# Permitir que React (o cualquier frontend local) consuma la API
+CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
 
-# Configuración global de la API
+# =========================================================
+# CONFIGURACIÓN DE DJANGO REST FRAMEWORK Y JWT
+# =========================================================
+
+# Le decimos a DRF que use JWT para autenticar a los usuarios
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-    ),
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+# Configuramos cuánto duran los tokens
+SIMPLE_JWT = {
+    # El token de acceso (Access Token) dura 1 día para que sea cómodo programar ahora mismo. 
+    # (En producción bajar a 15 minutos por seguridad)
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    
+    # El token de refresco (Refresh Token) dura 7 días
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    
+    # Evitamos que envíen el token con el formato viejo
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
 # Archivos subidos por los usuarios

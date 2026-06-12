@@ -1,5 +1,6 @@
 from django.urls import path
+from .views import RegistroUsuarioView
 
 urlpatterns = [
-    # Rutas de la API para el módulo de usuarios y atletas
+    path('registro/', RegistroUsuarioView.as_view(), name='registro-usuario')
 ]
