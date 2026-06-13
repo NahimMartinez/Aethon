@@ -23,5 +23,8 @@ urlpatterns = [
     path('api/atletas/', include('atletas.urls')),
 
     # urls de Pruebas
-    path('api/pruebas/', include('pruebas.urls'))
+    path('api/pruebas/', include('pruebas.urls')),
+
+    # urls de Instituciones
+    path('api/institucion/', include('institucion.urls'))
 ]
