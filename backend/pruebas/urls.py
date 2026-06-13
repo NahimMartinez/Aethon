@@ -1,5 +1,7 @@
 from django.urls import path
+from .views import TipoPruebaListCreateView, RegistroPruebaView
 
 urlpatterns = [
-    # Rutas de la API para gestionar las sesiones y pruebas físicas
+    path('tipos/', TipoPruebaListCreateView.as_view(), name='tipos-prueba'),
+    path('registrar/', RegistroPruebaView.as_view(), name='registrar-prueba'),
 ]
