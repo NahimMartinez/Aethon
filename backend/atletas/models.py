@@ -3,14 +3,7 @@ from PIL import Image
 from typing import Any
 from datetime import date
 from django.conf import settings
-
-
-class Categoria(models.Model):
-    anio = models.IntegerField(unique=True, null=False, blank=False)
-
-    def __str__(self) -> str:
-        return f"{self.anio}"
-    
+from institucion.models import Categoria  
 
 class Atleta(models.Model):
     nombre = models.CharField(max_length=150, null=False, blank=False)
@@ -26,8 +19,7 @@ class Atleta(models.Model):
     ]
     genero = models.CharField(max_length=7, choices=GENEROS)
     # Clave foránea
-    coach = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
-    categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True, blank=True)
+
 
     def __str__(self) -> str:
         return f"{self.nombre} - {self.apellido} - {self.fecha_nacimiento}"
@@ -56,3 +48,20 @@ class Atleta(models.Model):
     def edad(self) -> int:
         hoy = date.today()
         return hoy.year - self.fecha_nacimiento.year - ((hoy.month, hoy.day) < (self.fecha_nacimiento.month, self.fecha_nacimiento.day))
+    
+class HistorialAtletaCategoria(models.Model):
+    anio_temporada = models.IntegerField(null=False, blank=True)
+
+    atleta = models.ForeignKey(Atleta, on_delete=models.CASCADE, null=False)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, null=False)
+
+    def __str__(self) -> str:
+        return f"{self.atleta.nombre} {self.atleta.apellido} - Cat. {self.categoria.anio} ({self.anio_temporada})"
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['atleta', 'categoria', 'anio_temporada'],
+                name='unique_historial_temporada'
+            )
+        ]
