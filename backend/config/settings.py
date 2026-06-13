@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'usuarios',
     'pruebas',
     'atletas',
+    'institucion'
 ]
 
 MIDDLEWARE = [
