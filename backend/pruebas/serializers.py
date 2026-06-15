@@ -18,7 +18,8 @@ class RegistroPruebaSerializer(serializers.ModelSerializer):
 
         prueba_nueva = Prueba.objects.create(
             datos_crudos=validated_data['datos_crudos'],
-            observaciones=validated_data.get('observaciones', None),            atleta=validated_data['atleta'],
+            observaciones=validated_data.get('observaciones', None),            
+            atleta=validated_data['atleta'],
             tipo_prueba=validated_data['tipo_prueba'],
             coach=coach_asignado
         )
