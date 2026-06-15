@@ -15,19 +15,11 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./backend:/app
+      - ./frontend:/app/templates 
     ports:
       - "8000:8000"
     depends_on:
       - db
-
-  frontend:
-    build: ./frontend
-    volumes:
-      - ./frontend:/app
-      # Este volumen anónimo evita que tu compu sobreescriba los node_modules del contenedor
-      - /app/node_modules
-    ports:
-      - "5173:5173"
 
 volumes:
   postgres_data:
