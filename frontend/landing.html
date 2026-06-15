@@ -1,0 +1,154 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}Aethon | Elite Athletic Intelligence{% endblock %}
+
+{% block extra_head %}
+<style>
+    html {
+    scroll-behavior: smooth;
+    }
+    body {
+        background:
+            radial-gradient(circle at top center,
+            rgba(0,229,255,.08) 0%,
+            transparent 40%),
+            #0c1324;
+    }
+    .glass-card {
+        background: rgba(12, 19, 36, 0.7);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(59, 73, 76, 0.5);
+    }
+    .cyan-glow {
+        box-shadow: 0 0 40px -10px rgba(0, 229, 255, 0.15);
+    }
+    .hero-gradient {
+        background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.08) 0%, transparent 70%);
+    }
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .active-glow {
+        filter: drop-shadow(0 0 8px rgba(195, 245, 255, 0.4));
+    }
+</style>
+{% endblock %}
+
+{% block main_layout %}
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant dark:border-outline-variant">
+    <div class="flex justify-between items-center px-margin-desktop py-stack-md max-w-container-max-width mx-auto">
+        <div class="flex items-center gap-3">
+            <img alt="Aethon Logo" class="h-16 w-auto active-glow" src="{% static 'img/logo.png' %}"/>
+            <span class="font-display-lg text-display-lg tracking-tighter text-primary dark:text-primary">Aethon</span>
+        </div>
+        <div class="hidden md:flex items-center gap-stack-lg">
+            <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-200" href="#features">Características</a>
+            <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-200" href="#benefits">Beneficios</a>
+            <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-200" href="#contact">Contacto</a>
+        </div>
+        
+        <a href="" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-sm font-label-md text-label-md uppercase tracking-wider hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary-container/20">
+            Staff Access
+        </a>
+    </div>
+</nav>
+
+<main class="pt-24">
+    <section class="max-w-[1440px] mx-auto px-margin-desktop py-24 hero-gradient relative">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+            <div class="flex flex-col gap-stack-md">
+                <h1 class="text-5xl md:text-6xl font-bold text-primary leading-tight">
+                    Potencia el talento de tu club al máximo nivel
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                    Aethon es la plataforma definitiva para evaluar, analizar y gestionar el rendimiento físico de tus atletas en tiempo real.
+                </p>
+                <div class="flex flex-wrap gap-stack-md mt-4">
+                    <button class="bg-primary-container text-on-primary-container px-8 py-3 rounded-sm font-label-md text-label-md uppercase font-bold hover:shadow-cyan-500/50 transition-all">
+                        Solicitar Demo
+                    </button>
+                    <button class="border border-outline text-primary px-8 py-3 rounded-sm font-label-md text-label-md uppercase hover:bg-surface-variant transition-all">
+                        Conocer más
+                    </button>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-primary-container to-secondary-container rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                <div class="relative glass-card rounded-lg overflow-hidden border border-outline-variant shadow-2xl cyan-glow">
+                    <img class="w-full h-auto object-cover opacity-90 group-hover:opacity-100 transition-all duration-500" alt="Dashboard Preview" src="{% static 'img/hero-imagen.png' %}"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-container-max-width mx-auto px-margin-desktop py-24" id="features">
+        <div class="text-center mb-16">
+            <span class="text-primary-container font-label-md text-label-md uppercase tracking-widest mb-2 block">Capacidades Elite</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Todo lo que tu cuerpo técnico necesita</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <div class="glass-card p-8 rounded-sm hover:border-primary-container transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-primary text-3xl">groups</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Directorio de Jugadores</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Gestión centralizada de perfiles y categorías. Mantén un historial completo de cada atleta en un solo lugar.</p>
+            </div>
+            <div class="glass-card p-8 rounded-sm hover:border-primary-container transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-primary text-3xl">fitness_center</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Registro de Evaluaciones</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Captura datos de campo de forma inmediata. Sincronización en tiempo real para un seguimiento preciso del progreso.</p>
+            </div>
+            <div class="glass-card p-8 rounded-sm hover:border-primary-container transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-sm bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-primary text-3xl">insights</span>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-primary mb-3">Análisis Estadístico</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Convierte marcas en decisiones estratégicas. Visualizaciones avanzadas para identificar picos de forma y riesgos de lesión.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline-variant py-stack-lg">
+    <div class="max-w-container-max-width mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-gutter">
+        <div class="flex flex-col items-center md:items-start gap-2">
+            <div class="flex items-center gap-2">
+                <img alt="Aethon Logo Small" class="h-12 w-auto active-glow" src="{% static 'img/logo.png' %}"/>
+                <span class="font-headline-sm text-headline-sm text-on-surface">Aethon</span>
+            </div>
+            <p class="font-label-sm text-label-sm text-on-surface-variant">© 2026 Aethon Elite Athletic Intelligence. All rights reserved.</p>
+        </div>
+        <div class="flex gap-4">
+            <a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all" href="#">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+            </a>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-1000');
+            observer.observe(el);
+        });
+    });
+</script>
+{% endblock %}
